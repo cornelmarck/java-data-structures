@@ -2,10 +2,10 @@ import java.util.Collection;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-public abstract class Heap<T extends Comparable<T>> extends CompleteBinaryTree<T> implements PriorityQueue<T> {
-    public Heap() {}
+public abstract class AbstractHeap<T extends Comparable<T>> extends CompleteBinaryTree<T> implements PriorityQueue<T> {
+    public AbstractHeap() {}
 
-    public Heap(Collection<T> items) {
+    public AbstractHeap(Collection<T> items) {
         super(items);
         heapify();
     }

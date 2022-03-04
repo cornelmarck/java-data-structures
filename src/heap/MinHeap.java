@@ -1,6 +1,6 @@
 import java.util.Collection;
 
-public class MinHeap<T extends Comparable<T>> extends Heap<T> {
+public class MinHeap<T extends Comparable<T>> extends AbstractHeap<T> {
     public MinHeap() {}
 
     public MinHeap(Collection<T> items) {

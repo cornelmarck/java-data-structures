@@ -1,6 +1,6 @@
 import java.util.Collection;
 
-public class MaxHeap<T extends Comparable<T>> extends Heap<T> {
+public class MaxHeap<T extends Comparable<T>> extends AbstractHeap<T> {
     public MaxHeap() {}
 
     public MaxHeap(Collection<T> items) {
