@@ -9,27 +9,22 @@ public class Heap<T extends Comparable<T>> extends CompleteBinaryTree<T> impleme
         setHeapType(type);
     }
 
+    private void setHeapType(HeapType type) {
+        if (type == HeapType.MIN) {
+            isWorse = (item, than) -> get(item).compareTo(get(than)) > 0;
+        }
+        else if (type == HeapType.MAX) {
+            isWorse = (item, than) -> get(item).compareTo(get(than)) < 0;
+        }
+        else {
+            throw new IllegalArgumentException("Heap type does not exist");
+        }
+    }
+
     public Heap(HeapType type, Collection<T> items) {
         super(items);
         setHeapType(type);
         heapify();
-    }
-
-    public void insert(T item) {
-        nodes.add(item);
-        swim(size() - 1);
-    }
-
-    public T remove() {
-        if (size() == 0) {
-            throw new NoSuchElementException();
-        }
-        T root = nodes.get(0);
-        swap(0, size() - 1);
-        nodes.remove(size() - 1);
-        sink(0);
-
-        return root;
     }
 
     private void heapify() {
@@ -56,22 +51,27 @@ public class Heap<T extends Comparable<T>> extends CompleteBinaryTree<T> impleme
         }
     }
 
+    public void insert(T item) {
+        nodes.add(item);
+        swim(size() - 1);
+    }
+
+    public T remove() {
+        if (size() == 0) {
+            throw new NoSuchElementException();
+        }
+        T root = nodes.get(0);
+        swap(0, size() - 1);
+        nodes.remove(size() - 1);
+        sink(0);
+
+        return root;
+    }
+
     private void swim(int k) {
         while (k > 0 && isWorse.test(parent(k), k)) {
             swap(k, parent(k));
             k = parent(k);
-        }
-    }
-
-    private void setHeapType(HeapType type) {
-        if (type == HeapType.MIN) {
-            isWorse = (item, than) -> get(item).compareTo(get(than)) > 0;
-        }
-        else if (type == HeapType.MAX) {
-            isWorse = (item, than) -> get(item).compareTo(get(than)) < 0;
-        }
-        else {
-            throw new IllegalArgumentException("Heap type does not exist");
         }
     }
 }
