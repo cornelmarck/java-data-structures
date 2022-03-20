@@ -1,4 +1,4 @@
-public interface Dict<K, V> {
+public interface Dictionary<K, V> {
 
     void put(K key, V value);
 

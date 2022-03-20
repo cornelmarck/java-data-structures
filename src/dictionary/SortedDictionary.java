@@ -1,4 +1,4 @@
-public interface SortedDict<K extends Comparable<K>, V> extends Dict<K, V> {
+public interface SortedDictionary<K extends Comparable<K>, V> extends Dictionary<K, V> {
 
     K min();
 

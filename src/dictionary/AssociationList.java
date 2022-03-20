@@ -2,7 +2,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class AssociationList<K, V> implements Dict<K, V> {
+public class AssociationList<K, V> implements Dictionary<K, V> {
     Node root;
     int size;
 
@@ -87,9 +87,9 @@ public class AssociationList<K, V> implements Dict<K, V> {
     }
 
     private class Node {
-        public K key;
-        public Node next;
-        public V value;
+        private K key;
+        private Node next;
+        private V value;
 
         public Node(K key, Node next, V value) {
             this.key = key;

@@ -1,7 +1,7 @@
 import java.util.List;
 import java.util.Objects;
 
-public class SortedAssociationList<K extends Comparable<K>, V> implements SortedDict<K, V> {
+public class SortedAssociationList<K extends Comparable<K>, V> implements SortedDictionary<K, V> {
     private List<K> keys;
     private List<V> values;
     private int size;
@@ -107,12 +107,12 @@ public class SortedAssociationList<K extends Comparable<K>, V> implements Sorted
 
     @Override
     public int rank(K key) {
-        return 0;
+        return binarySearch(key);
     }
 
     @Override
     public K select(int rank) {
-        return null;
+        return keys.get(rank);
     }
 
     private int binarySearch(K key) {
