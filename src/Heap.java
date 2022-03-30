@@ -1,29 +1,26 @@
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.NoSuchElementException;
-import java.util.function.BiPredicate;
 
-public class Heap<T extends Comparable<T>> extends CompleteBinaryTree<T> implements PriorityQueue<T> {
-    BiPredicate<Integer, Integer> isWorse;
+public class Heap<T extends Comparable<T>> extends CompleteBinaryTree<T> {
+    Comparator<T> comparator;
 
-    public Heap(HeapType type) {
-        setHeapType(type);
+    public Heap() {
+        this(Comparator.naturalOrder());
     }
 
-    private void setHeapType(HeapType type) {
-        if (type == HeapType.MIN) {
-            isWorse = (item, than) -> get(item).compareTo(get(than)) > 0;
-        }
-        else if (type == HeapType.MAX) {
-            isWorse = (item, than) -> get(item).compareTo(get(than)) < 0;
-        }
-        else {
-            throw new IllegalArgumentException("Heap type does not exist");
-        }
+    public Heap(Comparator<T> comparator) {
+        super();
+        this.comparator = comparator;
     }
 
-    public Heap(HeapType type, Collection<T> items) {
+    public Heap(Collection<T> items) {
+        this(items, Comparator.naturalOrder());
+    }
+
+    public Heap(Collection<T> items, Comparator<T> comparator) {
         super(items);
-        setHeapType(type);
+        this.comparator = comparator;
         heapify();
     }
 
@@ -36,14 +33,15 @@ public class Heap<T extends Comparable<T>> extends CompleteBinaryTree<T> impleme
     private void sink(int k) {
         while (left(k) < size()) {
             int child;
-            if (right(k) < size() && isWorse.test(left(k), right(k))) {
+
+            if (right(k) < size() && comparator.compare(get(left(k)), get(right(k))) < 0) {
                 child = right(k);
             }
             else {
                 child = left(k);
             }
 
-            if (!isWorse.test(k, child)) {
+            if (comparator.compare(get(k), get(child)) >= 0) {
                 break;
             }
             swap(k, child);
@@ -69,7 +67,7 @@ public class Heap<T extends Comparable<T>> extends CompleteBinaryTree<T> impleme
     }
 
     private void swim(int k) {
-        while (k > 0 && isWorse.test(parent(k), k)) {
+        while (k > 0 && comparator.compare(get(parent(k)), get(k)) < 0) {
             swap(k, parent(k));
             k = parent(k);
         }

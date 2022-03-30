@@ -1,6 +1,7 @@
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -8,8 +9,8 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 class MinHeapTest {
     @Test
-    void constructEmtpy() {
-        Heap<Integer> h = new Heap<>(HeapType.MIN);
+    void constructEmpty() {
+        Heap<Integer> h = new Heap<Integer>(Comparator.reverseOrder());
         assertEquals(0, h.size());
     }
 
@@ -21,7 +22,7 @@ class MinHeapTest {
         l.add(8);
         l.add(-3);
 
-        Heap<Integer> h = new Heap<>(HeapType.MIN, l);
+        Heap<Integer> h = new Heap<>(l, Comparator.reverseOrder());
         assertEquals(-3, h.get(0));
         assertNotEquals(50, h.get(1));
         assertNotEquals(50, h.get(2));
@@ -29,7 +30,7 @@ class MinHeapTest {
 
     @Test
     void insert() {
-        Heap<Integer> h = new Heap<>(HeapType.MIN);
+        Heap<Integer> h = new Heap<Integer>(Comparator.reverseOrder());
         h.insert(50);
         h.insert(20);
         h.insert(8);
@@ -40,7 +41,7 @@ class MinHeapTest {
 
     @Test
     void remove() {
-        PriorityQueue<Integer> h = new Heap<>(HeapType.MIN);
+        Heap<Integer> h = new Heap<Integer>(Comparator.reverseOrder());
         h.insert(20);
         h.insert(50);
         h.insert(-3);

@@ -78,9 +78,9 @@ public class BinarySearchTree<K extends Comparable<K>, V> implements SortedDicti
 
     @Override
     public Iterable<K> keys() {
-        Queue<K> q = new ArrayDeque<>();
-        getOrderedKeys(root, q);
-        return q;
+        List<K> keys = new ArrayList<>();
+        getOrderedKeys(root, keys);
+        return keys;
     }
 
     private Node search(K key) {

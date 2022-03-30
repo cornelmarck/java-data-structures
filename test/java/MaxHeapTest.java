@@ -7,8 +7,8 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MaxHeapTest {
     @Test
-    void constructEmtpy() {
-        PriorityQueue<Integer> h = new Heap<>(HeapType.MAX);
+    void constructEmpty() {
+        Heap<Integer> h = new Heap<>();
         assertEquals(0, h.size());
     }
 
@@ -20,13 +20,13 @@ class MaxHeapTest {
         l.add(8);
         l.add(-3);
 
-        Heap<Integer> h = new Heap<>(HeapType.MAX, l);
+        Heap<Integer> h = new Heap<>(l);
         assertEquals(50, h.get(0));
     }
 
     @Test
     void insert() {
-        Heap<Integer> h = new Heap<>(HeapType.MAX);
+        Heap<Integer> h = new Heap<>();
         h.insert(20);
         h.insert(50);
         h.insert(-3);
@@ -37,7 +37,7 @@ class MaxHeapTest {
 
     @Test
     void remove() {
-        PriorityQueue<Integer> h = new Heap<>(HeapType.MAX);
+        Heap<Integer> h = new Heap<>();
         h.insert(20);
         h.insert(50);
         h.insert(-3);
