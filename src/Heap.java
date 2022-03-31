@@ -34,14 +34,14 @@ public class Heap<T extends Comparable<T>> extends CompleteBinaryTree<T> {
         while (left(k) < size()) {
             int child;
 
-            if (right(k) < size() && comparator.compare(get(left(k)), get(right(k))) < 0) {
+            if (right(k) < size() && comparator.compare(get(left(k)), get(right(k))) >= 0) {
                 child = right(k);
             }
             else {
                 child = left(k);
             }
 
-            if (comparator.compare(get(k), get(child)) >= 0) {
+            if (comparator.compare(get(k), get(child)) < 0) {
                 break;
             }
             swap(k, child);
@@ -67,7 +67,7 @@ public class Heap<T extends Comparable<T>> extends CompleteBinaryTree<T> {
     }
 
     private void swim(int k) {
-        while (k > 0 && comparator.compare(get(parent(k)), get(k)) < 0) {
+        while (k > 0 && comparator.compare(get(parent(k)), get(k)) >= 0) {
             swap(k, parent(k));
             k = parent(k);
         }
