@@ -1,7 +1,9 @@
+package sort;
+
 import java.util.Comparator;
 import java.util.List;
 
-public class QuickSort<T extends Comparable<T>> implements SortingAlgorithm<T> {
+public class SimpleQuickSort<T extends Comparable<T>> implements SortingAlgorithm<T> {
 
     @Override
     public void sort(List<T> items) {
@@ -17,12 +19,12 @@ public class QuickSort<T extends Comparable<T>> implements SortingAlgorithm<T> {
         if (from >= to) {
             return;
         }
-        int split = partition(items, from, to, comparator);
+        int split = twoWayPartition(items, from, to, comparator);
         recursiveQuickSort(items, from, split, comparator);
         recursiveQuickSort(items, split + 1, to, comparator);
     }
 
-    private int partition(List<T> items, int from, int to, Comparator<T> comparator) {
+    private int twoWayPartition(List<T> items, int from, int to, Comparator<T> comparator) {
         int pivot = to - 1;
 
         int i = from - 1;

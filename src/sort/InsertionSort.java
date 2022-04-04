@@ -1,3 +1,5 @@
+package sort;
+
 import java.util.Comparator;
 import java.util.List;
 
@@ -19,7 +21,7 @@ public class InsertionSort<T extends Comparable<T>> implements SortingAlgorithm<
                 items.set(i, items.get(i + 1));
                 i--;
             }
-            items.set(i, key);
+            items.set(i + 1, key);
         }
     }
 }

@@ -1,3 +1,5 @@
+package data_structures;
+
 public interface SortedDictionary<K extends Comparable<K>, V> extends Dictionary<K, V> {
 
     K min();

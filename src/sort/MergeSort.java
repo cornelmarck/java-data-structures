@@ -1,3 +1,5 @@
+package sort;
+
 import java.util.ArrayDeque;
 import java.util.Comparator;
 import java.util.List;
@@ -14,7 +16,7 @@ public class MergeSort<T extends Comparable<T>> implements SortingAlgorithm<T> {
     }
 
     private void recursiveMergeSort(List<T> items, int from, int to, Comparator<T> comparator) {
-        if (from >= to) {
+        if (from >= to - 1) {
             return;
         }
 

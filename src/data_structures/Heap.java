@@ -1,3 +1,5 @@
+package data_structures;
+
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.NoSuchElementException;
