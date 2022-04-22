@@ -5,11 +5,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.cornelmarck</groupId>
-    <artifactId>data_structures</artifactId>
+    <artifactId>data-structures</artifactId>
     <packaging>pom</packaging>
     <version>1.0</version>
     <modules>
-        <module>sort</module>
+        <module>sorting</module>
+        <module>data-types</module>
     </modules>
 
     <properties>

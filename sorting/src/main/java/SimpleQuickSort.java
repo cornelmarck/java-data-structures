@@ -1,19 +1,17 @@
 import java.util.Comparator;
 import java.util.List;
 
-public class SimpleQuickSort<T extends Comparable<T>> implements SortingAlgorithm<T> {
+public class SimpleQuickSort {
 
-    @Override
-    public void sort(List<T> items) {
+    public static <T extends Comparable<T>> void sort(List<T> items) {
         sort(items, Comparator.naturalOrder());
     }
 
-    @Override
-    public void sort(List<T> items, Comparator<T> comparator) {
+    public static <T extends Comparable<T>> void sort(List<T> items, Comparator<T> comparator) {
         recursiveQuickSort(items, 0, items.size(), comparator);
     }
 
-    private void recursiveQuickSort(List<T> items, int from, int to, Comparator<T> comparator) {
+    private static <T extends Comparable<T>> void recursiveQuickSort(List<T> items, int from, int to, Comparator<T> comparator) {
         if (from >= to) {
             return;
         }
@@ -22,7 +20,7 @@ public class SimpleQuickSort<T extends Comparable<T>> implements SortingAlgorith
         recursiveQuickSort(items, split + 1, to, comparator);
     }
 
-    private int twoWayPartition(List<T> items, int from, int to, Comparator<T> comparator) {
+    private static <T extends Comparable<T>> int twoWayPartition(List<T> items, int from, int to, Comparator<T> comparator) {
         int pivot = to - 1;
 
         int i = from - 1;
@@ -36,7 +34,7 @@ public class SimpleQuickSort<T extends Comparable<T>> implements SortingAlgorith
         return i + 1;
     }
 
-    private void swap(List<T> items, int idx1, int idx2) {
+    private static <T extends Comparable<T>> void swap(List<T> items, int idx1, int idx2) {
         T tmp = items.get(idx1);
         items.set(idx1, items.get(idx2));
         items.set(idx2, tmp);
