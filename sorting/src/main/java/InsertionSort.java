@@ -1,16 +1,13 @@
 import java.util.Comparator;
 import java.util.List;
 
-public class InsertionSort<T extends Comparable<T>> implements SortingAlgorithm<T>{
+public class InsertionSort {
 
-
-    @Override
-    public void sort(List<T> items) {
+    public static <T extends Comparable<T>> void sort(List<T> items) {
         sort(items, Comparator.naturalOrder());
     }
 
-    @Override
-    public void sort(List<T> items, Comparator<T> comparator) {
+    public static <T extends Comparable<T>> void sort(List<T> items, Comparator<T> comparator) {
         for (int j = 1; j < items.size(); j++) {
             T key = items.get(j);
 
