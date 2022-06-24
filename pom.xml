@@ -7,11 +7,12 @@
     <groupId>com.cornelmarck</groupId>
     <artifactId>data-structures</artifactId>
     <packaging>pom</packaging>
-    <version>1.0</version>
+    <version>1.0-SNAPSHOT</version>
     <modules>
         <module>sorting</module>
         <module>data-types</module>
-        <module>graphs</module>
+        <module>graph-data-types</module>
+        <module>graph-algorithms</module>
     </modules>
 
     <properties>
