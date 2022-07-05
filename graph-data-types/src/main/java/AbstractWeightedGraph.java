@@ -34,6 +34,10 @@ public abstract class AbstractWeightedGraph<V> {
         adjacencyList.remove(vertex);
     }
 
+    public Set<V> vertices() {
+        return adjacencyList.keySet();
+    }
+
     public abstract void addEdge(WeightedEdge<V> edge);
 
     public abstract void removeEdge(WeightedEdge<V> edge);

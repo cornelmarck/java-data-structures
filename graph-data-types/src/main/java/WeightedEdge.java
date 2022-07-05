@@ -13,11 +13,11 @@ public class WeightedEdge<V> implements Comparable<WeightedEdge<V>> {
         return weight;
     }
 
-    public V getFrom() {
+    public V from() {
         return from;
     }
 
-    public V getTo() {
+    public V to() {
         return to;
     }
 
